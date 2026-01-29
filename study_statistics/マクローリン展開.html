@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>マクローリン展開とモーメント母関数（MGF）のインタラクティブな解説</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals -->
+    <!-- Application Structure Plan: アプリケーションは3つの主要セクションで構成されます：1. 「概念エクスプローラー」では、マクローリン展開が関数をどのように近似するかを視覚的に探求できます。2. 「インタラクティブな導出」では、ユーザーがパラメータ（n, p）を操作しながら、二項分布の平均と分散の導出過程をステップごとに追体験できます。3. 「要約」では、重要なポイントを整理して提示します。この thematic（主題別）構造は、ユーザーが基礎から学ぶか、具体的な例に直接進むかを選べるように設計されており、静的な文書よりも高い学習効果とエンゲージメントを目指します。 -->
+    <!-- Visualization & Content Choices: 
+        - マクローリン展開の理論 -> Goal: 探求 -> Viz: スライダー付きのインタラクティブな線グラフ (Chart.js/Canvas) -> Interaction: ユーザーが近似の項数を変更 -> Justification: 多項式近似の概念を視覚的に示し、直感的な理解を促進する。
+        - 二項分布のパラメータ -> Goal: 探求 -> Viz: スライダーと動的テキスト -> Interaction: ユーザーが試行回数nと成功確率pを変更 -> Justification: パラメータが分布の形状とモーメントに与える影響を直接的に体験させる。
+        - 二項分布の形状 -> Goal: 比較/情報提供 -> Viz: 棒グラフ (Chart.js/Canvas) -> Interaction: スライダーに応じてリアルタイムで更新 -> Justification: パラメータと分布形状の関連性を視覚的にフィードバックする。
+        - 導出過程 -> Goal: 整理/情報提供 -> Viz: クリックで進むステップ・バイ・ステップのカード形式 -> Interaction: ユーザーが順を追って計算過程を表示 -> Justification: 複雑な微分計算を管理しやすい小さなステップに分解し、認知負荷を軽減する。
+        - 計算結果（平均・分散） -> Goal: 情報提供 -> Viz: 動的な統計値表示 -> Interaction: スライダーに応じてリアルタイムで更新 -> Justification: 導出結果とパラメータの間の具体的な関係を強化する。
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            background-color: #FDFBF8;
+            color: #4A4A4A;
+        }
+
+        .math {
+            font-family: 'Times New Roman', Times, serif;
+            font-style: italic;
+        }
+
+        .math-var {
+            font-style: italic;
+        }
+
+        .active-nav {
+            color: #2563EB;
+            border-bottom: 2px solid #2563EB;
+        }
+
+        .nav-link {
+            transition: all 0.2s ease-in-out;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-link:hover {
+            color: #60A5FA;
+        }
+
+        .step-card {
+            background-color: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+
+        .step-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-center items-center h-16">
+                <div class="flex space-x-8 text-lg">
+                    <a href="#section-concepts" class="nav-link active-nav">概念エクスプローラー</a>
+                    <a href="#section-derivation" class="nav-link">インタラクティブな導出</a>
+                    <a href="#section-summary" class="nav-link">要約</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-800 tracking-tight">マクローリン展開とモーメント母関数</h1>
+            <p class="mt-4 text-xl text-gray-600">統計学の理論をインタラクティブに探求する</p>
+        </div>
+
+        <section id="section-concepts" class="mb-20 pt-16 -mt-16">
+            <h2 class="text-3xl font-bold text-center mb-2 text-gray-800">1. 概念エクスプローラー</h2>
+            <p class="text-lg text-center text-gray-600 mb-12">マクローリン展開が、どのようにして複雑な関数を単純な多項式で近似するのかを視覚的に理解しましょう。</p>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-700">関数 <span class="math">cos(x)</span> の近似</h3>
+                    <p class="mb-6 text-gray-600">下のスライダーを動かして、マクローリン展開の項数を増やしてみてください。近似多項式が元の <span
+                            class="math">cos(x)</span> のグラフに近づいていく様子がわかります。</p>
+                    <div class="space-y-4">
+                        <div>
+                            <label for="maclaurin-terms" class="block text-sm font-medium text-gray-700">近似に使う項の数: <span
+                                    id="terms-count" class="font-bold text-blue-600">1</span></label>
+                            <input id="maclaurin-terms" type="range" min="1" max="5" value="1" step="1"
+                                class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                        </div>
+                        <div class="text-center p-3 bg-gray-50 rounded-md">
+                            <p class="text-sm text-gray-500">近似多項式:</p>
+                            <p id="polynomial-display" class="text-lg font-mono text-gray-800"></p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="chart-container">
+                        <canvas id="maclaurinChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-derivation" class="mb-20 pt-16 -mt-16">
+            <h2 class="text-3xl font-bold text-center mb-2 text-gray-800">2. インタラクティブな導出</h2>
+            <p class="text-lg text-center text-gray-600 mb-12">
+                二項分布のモーメント母関数（MGF）を用いて、期待値（平均）と分散を導出する過程を探ります。パラメータを調整して、分布の形とモーメントの変化を観察しましょう。</p>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-700">二項分布 <span class="math-var">B(n, p)</span>
+                    </h3>
+                    <p class="mb-6 text-gray-600">試行回数 <span class="math-var">n</span> と成功確率 <span
+                            class="math-var">p</span> を変更して、分布の変化を見てみましょう。</p>
+                    <div class="space-y-6">
+                        <div>
+                            <label for="n-slider" class="block text-sm font-medium text-gray-700">試行回数 <span
+                                    class="math-var">n</span> = <span id="n-value"
+                                    class="font-bold text-blue-600">10</span></label>
+                            <input id="n-slider" type="range" min="2" max="50" value="10"
+                                class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                        </div>
+                        <div>
+                            <label for="p-slider" class="block text-sm font-medium text-gray-700">成功確率 <span
+                                    class="math-var">p</span> = <span id="p-value"
+                                    class="font-bold text-blue-600">0.50</span></label>
+                            <input id="p-slider" type="range" min="0.05" max="0.95" value="0.5" step="0.01"
+                                class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 text-center">
+                            <div class="bg-blue-50 p-3 rounded-lg">
+                                <p class="text-sm text-blue-800">期待値 <span class="math">E[X] = np</span></p>
+                                <p id="mean-display" class="text-2xl font-bold text-blue-900">5.00</p>
+                            </div>
+                            <div class="bg-green-50 p-3 rounded-lg">
+                                <p class="text-sm text-green-800">分散 <span class="math">V[X] = npq</span></p>
+                                <p id="variance-display" class="text-2xl font-bold text-green-900">2.50</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="chart-container">
+                        <canvas id="binomialChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12">
+                <h3 class="text-2xl font-semibold text-center mb-6 text-gray-700">モーメント導出のステップ</h3>
+                <div class="max-w-3xl mx-auto space-y-6">
+                    <div id="step1" class="step-card">
+                        <h4 class="font-bold text-lg mb-2">準備：モーメント母関数 (MGF)</h4>
+                        <p>二項分布のMGFは <span class="math">M<sub>X</sub>(t) = (pe<sup>t</sup> + q)<sup>n</sup></span>
+                            です。ここから微分を用いてモーメントを導出します。</p>
+                    </div>
+                    <div id="step2" class="step-card">
+                        <h4 class="font-bold text-lg mb-2">期待値 E[X] の導出 ①：1回微分</h4>
+                        <p>MGFを <span class="math-var">t</span> で1回微分します。合成関数の微分（連鎖律）を用いると、</p>
+                        <p class="mt-2 p-3 bg-gray-100 rounded-md text-center font-mono text-sm sm:text-base"><span
+                                class="math">M'<sub>X</sub>(t) = n(pe<sup>t</sup> + q)<sup>n-1</sup> ⋅
+                                (pe<sup>t</sup>)</span></p>
+                    </div>
+                    <div id="step3" class="step-card">
+                        <h4 class="font-bold text-lg mb-2">期待値 E[X] の導出 ②：t=0 を代入</h4>
+                        <p><span class="math">t=0</span> を代入すると <span class="math">E[X]</span> が得られます。<span
+                                class="math">e<sup>0</sup>=1</span> と <span class="math">p+q=1</span> を使うと、</p>
+                        <p class="mt-2 p-3 bg-gray-100 rounded-md text-center font-mono text-sm sm:text-base"><span
+                                class="math">E[X] = M'<sub>X</sub>(0) = n(p+q)<sup>n-1</sup> ⋅ p = np</span></p>
+                    </div>
+                    <div id="step4" class="step-card">
+                        <h4 class="font-bold text-lg mb-2">2次モーメント E[X²] の導出 ①：2回微分</h4>
+                        <p><span class="math">M'<sub>X</sub>(t)</span> をさらに <span class="math-var">t</span>
+                            で微分します。積の微分法を用いると、</p>
+                        <p class="mt-2 p-3 bg-gray-100 rounded-md text-center font-mono text-sm sm:text-base"><span
+                                class="math">M''<sub>X</sub>(t) =
+                                n(n-1)(pe<sup>t</sup>+q)<sup>n-2</sup>(pe<sup>t</sup>)<sup>2</sup> +
+                                n(pe<sup>t</sup>+q)<sup>n-1</sup>(pe<sup>t</sup>)</span></p>
+                    </div>
+                    <div id="step5" class="step-card">
+                        <h4 class="font-bold text-lg mb-2">2次モーメント E[X²] の導出 ②：t=0 を代入</h4>
+                        <p><span class="math">t=0</span> を代入して <span class="math">E[X<sup>2</sup>]</span> を求めます。</p>
+                        <p class="mt-2 p-3 bg-gray-100 rounded-md text-center font-mono text-sm sm:text-base"><span
+                                class="math">E[X<sup>2</sup>] = n(n-1)p<sup>2</sup> + np</span></p>
+                    </div>
+                    <div id="step6" class="step-card">
+                        <h4 class="font-bold text-lg mb-2">分散 V[X] の導出</h4>
+                        <p>分散の公式 <span class="math">V[X] = E[X<sup>2</sup>] - (E[X])<sup>2</sup></span> を用いて計算します。</p>
+                        <p class="mt-2 p-3 bg-gray-100 rounded-md text-center font-mono text-sm sm:text-base"><span
+                                class="math">V[X] = (n(n-1)p<sup>2</sup> + np) - (np)<sup>2</sup> = np(1-p) = npq</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-summary" class="pt-16 -mt-16">
+            <h2 class="text-3xl font-bold text-center mb-2 text-gray-800">3. 要約</h2>
+            <p class="text-lg text-center text-gray-600 mb-12">このアプリケーションで探求した重要な概念をまとめます。</p>
+            <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                    <h3 class="text-xl font-semibold mb-3 text-gray-700">マクローリン展開</h3>
+                    <p class="text-gray-600">複雑な関数を <span class="math">x=0</span>
+                        の周りで単純な多項式に近似する手法。近似の項数を増やすほど、元の関数に近づきます。</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                    <h3 class="text-xl font-semibold mb-3 text-gray-700">モーメント母関数 (MGF)</h3>
+                    <p class="text-gray-600">確率分布の「指紋」のようなもの。MGFを <span class="math-var">t</span> で微分して <span
+                            class="math">t=0</span> を代入することで、期待値や分散などのモーメントを体系的に導出できます。</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                    <h3 class="text-xl font-semibold mb-3 text-gray-700">二項分布の特性</h3>
+                    <p class="text-gray-600">MGFを用いた導出により、期待値が <span class="math">np</span>、分散が <span
+                            class="math">npq</span> であることが示されます。これらの値は分布の中心と広がりを決定づけます。</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // Navigation scroll behavior
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('section');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.3
+            };
+
+            const sectionObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active-nav');
+                            if (link.getAttribute('href').substring(1) === entry.target.id) {
+                                link.classList.add('active-nav');
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                sectionObserver.observe(section);
+            });
+
+            // --- Section 1: Maclaurin Expansion Chart ---
+            const maclaurinTermsSlider = document.getElementById('maclaurin-terms');
+            const termsCountSpan = document.getElementById('terms-count');
+            const polynomialDisplay = document.getElementById('polynomial-display');
+            const maclaurinCtx = document.getElementById('maclaurinChart').getContext('2d');
+            let maclaurinChart;
+
+            const factorial = (n) => (n <= 1 ? 1 : n * factorial(n - 1));
+
+            const maclaurinPolynomials = {
+                1: { func: (x) => 1, text: "1" },
+                2: { func: (x) => 1 - Math.pow(x, 2) / 2, text: "1 - x²/2!" },
+                3: { func: (x) => 1 - Math.pow(x, 2) / 2 + Math.pow(x, 4) / 24, text: "1 - x²/2! + x⁴/4!" },
+                4: { func: (x) => 1 - Math.pow(x, 2) / 2 + Math.pow(x, 4) / 24 - Math.pow(x, 6) / 720, text: "1 - x²/2! + x⁴/4! - x⁶/6!" },
+                5: { func: (x) => 1 - Math.pow(x, 2) / 2 + Math.pow(x, 4) / 24 - Math.pow(x, 6) / 720 + Math.pow(x, 8) / 40320, text: "1 - x²/2! + ... + x⁸/8!" }
+            };
+
+            function updateMaclaurinChart() {
+                const terms = parseInt(maclaurinTermsSlider.value);
+                termsCountSpan.textContent = terms;
+                polynomialDisplay.innerHTML = maclaurinPolynomials[terms].text.replace(/x\^(\d+)/g, 'x<sup>$1</sup>').replace(/\//g, ' / ');
+
+                const labels = Array.from({ length: 101 }, (_, i) => -5 + i * 0.1).map(v => v.toFixed(1));
+                const cosData = labels.map(x => Math.cos(parseFloat(x)));
+                const approximationData = labels.map(x => maclaurinPolynomials[terms].func(parseFloat(x)));
+
+                if (maclaurinChart) {
+                    maclaurinChart.data.datasets[1].data = approximationData;
+                    maclaurinChart.update();
+                } else {
+                    maclaurinChart = new Chart(maclaurinCtx, {
+                        type: 'line',
+                        data: {
+                            labels: labels,
+                            datasets: [
+                                {
+                                    label: 'cos(x)',
+                                    data: cosData,
+                                    borderColor: 'rgba(239, 68, 68, 0.8)',
+                                    backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                                    borderWidth: 2,
+                                    pointRadius: 0,
+                                    tension: 0.1
+                                },
+                                {
+                                    label: 'Maclaurin Approximation',
+                                    data: approximationData,
+                                    borderColor: 'rgba(59, 130, 246, 0.8)',
+                                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                                    borderWidth: 3,
+                                    pointRadius: 0,
+                                    tension: 0.1,
+                                    borderDash: [5, 5]
+                                }
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                y: {
+                                    beginAtZero: false,
+                                    min: -1.5,
+                                    max: 1.5
+                                },
+                                x: {
+                                    ticks: {
+                                        maxTicksLimit: 11
+                                    }
+                                }
+                            },
+                            plugins: {
+                                tooltip: {
+                                    mode: 'index',
+                                    intersect: false,
+                                }
+                            }
+                        }
+                    });
+                }
+            }
+
+            maclaurinTermsSlider.addEventListener('input', updateMaclaurinChart);
+            updateMaclaurinChart();
+
+            // --- Section 2: Binomial Distribution Interactive Derivation ---
+            const nSlider = document.getElementById('n-slider');
+            const pSlider = document.getElementById('p-slider');
+            const nValueSpan = document.getElementById('n-value');
+            const pValueSpan = document.getElementById('p-value');
+            const meanDisplay = document.getElementById('mean-display');
+            const varianceDisplay = document.getElementById('variance-display');
+            const binomialCtx = document.getElementById('binomialChart').getContext('2d');
+            let binomialChart;
+
+            function binomialPMF(k, n, p) {
+                if (k < 0 || k > n) return 0;
+                const q = 1 - p;
+                const combinations = factorial(n) / (factorial(k) * factorial(n - k));
+                return combinations * Math.pow(p, k) * Math.pow(q, n - k);
+            }
+
+            function updateBinomialDistribution() {
+                const n = parseInt(nSlider.value);
+                const p = parseFloat(pSlider.value);
+                const q = 1 - p;
+
+                nValueSpan.textContent = n;
+                pValueSpan.textContent = p.toFixed(2);
+
+                const mean = n * p;
+                const variance = n * p * q;
+                meanDisplay.textContent = mean.toFixed(2);
+                varianceDisplay.textContent = variance.toFixed(2);
+
+                const labels = Array.from({ length: n + 1 }, (_, i) => i);
+                const data = labels.map(k => binomialPMF(k, n, p));
+
+                if (binomialChart) {
+                    binomialChart.data.labels = labels;
+                    binomialChart.data.datasets[0].data = data;
+                    binomialChart.update();
+                } else {
+                    binomialChart = new Chart(binomialCtx, {
+                        type: 'bar',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Probability',
+                                data: data,
+                                backgroundColor: 'rgba(34, 197, 94, 0.6)',
+                                borderColor: 'rgba(22, 163, 74, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    title: {
+                                        display: true,
+                                        text: 'Probability'
+                                    }
+                                },
+                                x: {
+                                    title: {
+                                        display: true,
+                                        text: 'Number of Successes (k)'
+                                    }
+                                }
+                            },
+                            plugins: {
+                                legend: {
+                                    display: false
+                                }
+                            }
+                        }
+                    });
+                }
+            }
+
+            nSlider.addEventListener('input', updateBinomialDistribution);
+            pSlider.addEventListener('input', updateBinomialDistribution);
+            updateBinomialDistribution();
+
+            // --- Derivation Steps Animation ---
+            const stepCards = document.querySelectorAll('.step-card');
+            let delay = 0;
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, delay);
+                        delay += 200;
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            let isFirstTime = true;
+            const derivationSectionObserver = new IntersectionObserver(entries => {
+                if (entries[0].isIntersecting && isFirstTime) {
+                    delay = 0;
+                    stepCards.forEach(card => observer.observe(card));
+                    isFirstTime = false;
+                }
+            }, { threshold: 0.1 });
+
+            derivationSectionObserver.observe(document.getElementById('section-derivation'));
+        });
+    </script>
+
+</body>
+
+</html>

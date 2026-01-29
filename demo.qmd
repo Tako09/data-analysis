@@ -1,0 +1,7 @@
+---
+title: "学習したものをまとめる場所"
+listing:
+    contents: demo/**/*.ipynb # notebooksフォルダの中身を全部リスト化
+    type: table                # default, table, grid など選べる
+    sort: "date desc"
+---

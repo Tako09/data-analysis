@@ -1,0 +1,47 @@
+{
+  "analysis.qmd": {
+    "analysis.html": "9cf1178c"
+  },
+  "demo/basic_baysian_models/beisyan_modeling.ipynb": {
+    "beisyan_modeling.html": "097152fa"
+  },
+  "demo/basic_time_series_models/sarima/sarima_demo.ipynb": {
+    "sarima_demo.html": "cf6a08bc"
+  },
+  "exe_data_analysis/steam-analysis/steam_data_extraction.ipynb": {
+    "steam_data_extraction.html": "13e958d5"
+  },
+  "about.qmd": {
+    "about.html": "063a0107"
+  },
+  "demo.qmd": {
+    "demo.html": "22fcf8c5"
+  },
+  "index.qmd": {
+    "index.html": "a5dbba66"
+  },
+  "demo/basic_factor_analyze/factor_analyze_demo.ipynb": {
+    "factor_analyze_demo.html": "b548c126"
+  },
+  "demo/basic_time_series_models/sarima_demo.ipynb": {
+    "sarima_demo.html": "f3a2287f"
+  },
+  "demo/understanding_mercury/mine/factor_analyze_demo.ipynb": {
+    "factor_analyze_demo.html": "4890f312"
+  },
+  "demo/understanding_mercury/mine/sarima_demo.ipynb": {
+    "sarima_demo.html": "0cb16668"
+  },
+  "demo/understanding_mercury/sample/demo-dataframe-and-plots.ipynb": {
+    "demo-dataframe-and-plots.html": "8f88ed4c"
+  },
+  "demo/understanding_mercury/sample/demo-slides.ipynb": {
+    "demo-slides.html": "400dd4c5"
+  },
+  "demo/understanding_mercury/sample/demo.ipynb": {
+    "demo.html": "c27ebecb"
+  },
+  "demo/understanding_mercury/sample/welcome.md": {
+    "welcome.html": "794acaea"
+  }
+}
