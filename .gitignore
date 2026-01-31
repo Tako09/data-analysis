@@ -26,3 +26,6 @@ dir_mst/
 *.xlsx
 *.pdf
 *.html
+
+/.quarto/
+**/*.quarto_ipynb

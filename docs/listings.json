@@ -1,0 +1,13 @@
+[
+  {
+    "listing": "/demo.html",
+    "items": [
+      "/work/statistic_methods/basic_baysian_models/beisyan_modeling.html",
+      "/work/statistic_methods/basic_time_series_models/sarima_demo.html",
+      "/work/statistic_methods/basic_factor_analyze/factor_analyze_demo.html",
+      "/work/improve_python/demo_batch.html",
+      "/work/improve_python/demo_tstring.html",
+      "/work/analysis/steam-analysis/script/steam_data_extraction.html"
+    ]
+  }
+]
