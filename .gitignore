@@ -1,0 +1,28 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+venv/
+env/
+
+# quartoの設定ファイルの無視
+.quarto/
+_site/
+*.qmd
+_publish.yml
+_quarto.yml
+
+# ディレクトリの無視
+dir_mst/
+
+# ファイルの無視
+*.csv
+*.xlsx
+*.pdf
+*.html
