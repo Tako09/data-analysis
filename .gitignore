@@ -11,5 +11,18 @@ wheels/
 venv/
 env/
 
-# Research and study materials
-study_statistics/論文/
+# quartoの設定ファイルの無視
+.quarto/
+_site/
+*.qmd
+_publish.yml
+_quarto.yml
+
+# ディレクトリの無視
+dir_mst/
+
+# ファイルの無視
+*.csv
+*.xlsx
+*.pdf
+*.html
