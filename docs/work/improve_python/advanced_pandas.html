@@ -161,7 +161,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
   <li><a href="#結合の安全性" id="toc-結合の安全性" class="nav-link" data-scroll-target="#結合の安全性">結合の安全性</a></li>
   <li><a href="#チェーンメソッド" id="toc-チェーンメソッド" class="nav-link" data-scroll-target="#チェーンメソッド">チェーンメソッド</a></li>
-  <li><a href="#要約" id="toc-要約" class="nav-link" data-scroll-target="#要約">要約</a></li>
   </ul>
 </nav>
     </div>
@@ -202,7 +201,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="8a72db80" class="cell" data-execution_count="1">
+<div id="8a72db80" class="cell" data-execution_count="32">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -210,14 +209,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> modules.generate_data <span class="im">import</span> generate_survey_data, generate_duplicate_example</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="7965ebb2" class="cell" data-execution_count="2">
+<div id="7965ebb2" class="cell" data-execution_count="33">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># バージョンの確認</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pd.__version__)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>3.0.0</code></pre>
 </div>
 </div>
-<div id="7af729f3" class="cell" data-execution_count="3">
+<div id="7af729f3" class="cell" data-execution_count="34">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> sns.load_dataset(<span class="st">'titanic'</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>display(df.head())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -342,7 +341,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="9cd97fe7" class="cell" data-execution_count="4">
+<div id="9cd97fe7" class="cell" data-execution_count="35">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_q <span class="op">=</span> generate_survey_data(n<span class="op">=</span><span class="dv">10</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>display(df_q)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -363,72 +362,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <th data-quarto-table-cell-role="th">0</th>
 <td>U001</td>
-<td>32</td>
-<td>2.0</td>
-<td>[寿司, カレー, ラーメン]</td>
+<td>45</td>
+<td>3.0</td>
+<td>[ラーメン]</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">1</th>
 <td>U002</td>
-<td>40</td>
+<td>29</td>
 <td>5.0</td>
-<td>[ラーメン]</td>
+<td>[カレー, サラダ, パスタ]</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">2</th>
 <td>U003</td>
-<td>29</td>
+<td>34</td>
 <td>NaN</td>
-<td>[サラダ, 寿司, パスタ]</td>
+<td>[ハンバーグ, カレー]</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">3</th>
 <td>U004</td>
-<td>49</td>
-<td>4.0</td>
-<td>[ハンバーグ]</td>
+<td>33</td>
+<td>5.0</td>
+<td>[サラダ, カレー, 寿司]</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">4</th>
 <td>U005</td>
-<td>39</td>
-<td>5.0</td>
-<td>[パスタ, ラーメン, ハンバーグ]</td>
+<td>22</td>
+<td>4.0</td>
+<td>[サラダ, カレー, パスタ]</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">5</th>
 <td>U006</td>
-<td>47</td>
+<td>31</td>
 <td>4.0</td>
-<td>[寿司, ハンバーグ]</td>
+<td>[サラダ, カレー, ハンバーグ]</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">6</th>
 <td>U007</td>
-<td>57</td>
+<td>41</td>
 <td>NaN</td>
-<td>[カレー, ラーメン]</td>
+<td>[サラダ, 寿司, カレー]</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">7</th>
 <td>U008</td>
-<td>20</td>
-<td>2.0</td>
-<td>[ラーメン, パスタ, カレー]</td>
+<td>31</td>
+<td>4.0</td>
+<td>[カレー, サラダ, パスタ]</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">8</th>
 <td>U009</td>
-<td>31</td>
+<td>44</td>
 <td>2.0</td>
-<td>[ハンバーグ, 寿司, ラーメン]</td>
+<td>[パスタ, 寿司]</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">9</th>
 <td>U010</td>
-<td>33</td>
-<td>4.0</td>
-<td>[パスタ, 寿司, ラーメン]</td>
+<td>26</td>
+<td>3.0</td>
+<td>[カレー]</td>
 </tr>
 </tbody>
 </table>
@@ -436,7 +435,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="837b94d0" class="cell" data-execution_count="5">
+<div id="837b94d0" class="cell" data-execution_count="36">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># user_idで結合する多対多になるデータを用意</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df_user, df_order <span class="op">=</span> generate_duplicate_example()</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>display(df_user)</span>
@@ -523,7 +522,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="1b3bfbe1" class="cell" data-execution_count="6">
+<div id="1b3bfbe1" class="cell" data-execution_count="37">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"カテゴリ"</span>: [],</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"コード"</span>: [],</span>
@@ -539,7 +538,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="データ読み込みと出力" class="level2">
 <h2 class="anchored" data-anchor-id="データ読み込みと出力">データ読み込みと出力</h2>
-<div id="dc564a5e" class="cell" data-execution_count="7">
+<div id="dc564a5e" class="cell" data-execution_count="38">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>add_entry(</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    category<span class="op">=</span><span class="st">"読込"</span>,</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    code<span class="op">=</span><span class="st">"pd.read_csv(path, chunksize=100, usecols=[...])"</span>,</span>
@@ -631,7 +630,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>ちょっと蛇足化もしれないがメモリを節約することができる</p>
-<div id="5dac516e" class="cell" data-execution_count="8">
+<div id="5dac516e" class="cell" data-execution_count="39">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># マークダウンで州つりょく</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>add_entry(</span>
@@ -648,7 +647,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>df_order.head(<span class="dv">10</span>).to_markdown(<span class="st">"./data/orders.md"</span>, index<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co"># df.to_csv("./data/titanic.csv", index=False)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="76f86f7a" class="cell" data-execution_count="9">
+<div id="76f86f7a" class="cell" data-execution_count="40">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>add_entry(</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    category<span class="op">=</span><span class="st">"出力"</span>,</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    code<span class="op">=</span><span class="st">"df.style.background_gradient(path)"</span>,</span>
@@ -658,38 +657,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 簡単なヒートマップはpanadsだけで可能</span></span>
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>agged.style.background_gradient(cmap<span class="op">=</span><span class="st">'Blues'</span>, subset<span class="op">=</span>[<span class="st">'mean_fare'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="40">
 <style type="text/css">
-#T_c6e45_row0_col2 {
+#T_9cb95_row0_col2 {
   background-color: #4292c6;
   color: #f1f1f1;
 }
-#T_c6e45_row1_col2 {
+#T_9cb95_row1_col2 {
   background-color: #eaf2fb;
   color: #000000;
 }
-#T_c6e45_row2_col2, #T_c6e45_row5_col2 {
+#T_9cb95_row2_col2, #T_9cb95_row5_col2 {
   background-color: #f7fbff;
   color: #000000;
 }
-#T_c6e45_row3_col2 {
+#T_9cb95_row3_col2 {
   background-color: #08306b;
   color: #f1f1f1;
 }
-#T_c6e45_row4_col2 {
+#T_9cb95_row4_col2 {
   background-color: #e3eef8;
   color: #000000;
 }
 </style>
 
-<table id="T_c6e45" class="caption-top table table-sm table-striped small">
+<table id="T_9cb95" class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th class="blank" data-quarto-table-cell-role="th">&nbsp;</th>
 <th class="blank level0" data-quarto-table-cell-role="th">&nbsp;</th>
-<th id="T_c6e45_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">fare</th>
-<th id="T_c6e45_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">user</th>
-<th id="T_c6e45_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">mean_fare</th>
+<th id="T_9cb95_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">fare</th>
+<th id="T_9cb95_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">user</th>
+<th id="T_9cb95_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">mean_fare</th>
 </tr>
 <tr class="even">
 <th class="index_name level0" data-quarto-table-cell-role="th">survived</th>
@@ -701,42 +700,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<th rowspan="3" id="T_c6e45_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">0</th>
-<th id="T_c6e45_level1_row0" class="row_heading level1 row0" data-quarto-table-cell-role="th">1</th>
-<td id="T_c6e45_row0_col0" class="data row0 col0">5174.720600</td>
-<td id="T_c6e45_row0_col1" class="data row0 col1">80</td>
-<td id="T_c6e45_row0_col2" class="data row0 col2">64.684007</td>
+<th rowspan="3" id="T_9cb95_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">0</th>
+<th id="T_9cb95_level1_row0" class="row_heading level1 row0" data-quarto-table-cell-role="th">1</th>
+<td id="T_9cb95_row0_col0" class="data row0 col0">5174.720600</td>
+<td id="T_9cb95_row0_col1" class="data row0 col1">80</td>
+<td id="T_9cb95_row0_col2" class="data row0 col2">64.684007</td>
 </tr>
 <tr class="even">
-<th id="T_c6e45_level1_row1" class="row_heading level1 row1" data-quarto-table-cell-role="th">2</th>
-<td id="T_c6e45_row1_col0" class="data row1 col0">1882.995800</td>
-<td id="T_c6e45_row1_col1" class="data row1 col1">97</td>
-<td id="T_c6e45_row1_col2" class="data row1 col2">19.412328</td>
+<th id="T_9cb95_level1_row1" class="row_heading level1 row1" data-quarto-table-cell-role="th">2</th>
+<td id="T_9cb95_row1_col0" class="data row1 col0">1882.995800</td>
+<td id="T_9cb95_row1_col1" class="data row1 col1">97</td>
+<td id="T_9cb95_row1_col2" class="data row1 col2">19.412328</td>
 </tr>
 <tr class="odd">
-<th id="T_c6e45_level1_row2" class="row_heading level1 row2" data-quarto-table-cell-role="th">3</th>
-<td id="T_c6e45_row2_col0" class="data row2 col0">5085.003500</td>
-<td id="T_c6e45_row2_col1" class="data row2 col1">372</td>
-<td id="T_c6e45_row2_col2" class="data row2 col2">13.669364</td>
+<th id="T_9cb95_level1_row2" class="row_heading level1 row2" data-quarto-table-cell-role="th">3</th>
+<td id="T_9cb95_row2_col0" class="data row2 col0">5085.003500</td>
+<td id="T_9cb95_row2_col1" class="data row2 col1">372</td>
+<td id="T_9cb95_row2_col2" class="data row2 col2">13.669364</td>
 </tr>
 <tr class="even">
-<th rowspan="3" id="T_c6e45_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">1</th>
-<th id="T_c6e45_level1_row3" class="row_heading level1 row3" data-quarto-table-cell-role="th">1</th>
-<td id="T_c6e45_row3_col0" class="data row3 col0">13002.691900</td>
-<td id="T_c6e45_row3_col1" class="data row3 col1">136</td>
-<td id="T_c6e45_row3_col2" class="data row3 col2">95.608029</td>
+<th rowspan="3" id="T_9cb95_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">1</th>
+<th id="T_9cb95_level1_row3" class="row_heading level1 row3" data-quarto-table-cell-role="th">1</th>
+<td id="T_9cb95_row3_col0" class="data row3 col0">13002.691900</td>
+<td id="T_9cb95_row3_col1" class="data row3 col1">136</td>
+<td id="T_9cb95_row3_col2" class="data row3 col2">95.608029</td>
 </tr>
 <tr class="odd">
-<th id="T_c6e45_level1_row4" class="row_heading level1 row4" data-quarto-table-cell-role="th">2</th>
-<td id="T_c6e45_row4_col0" class="data row4 col0">1918.845900</td>
-<td id="T_c6e45_row4_col1" class="data row4 col1">87</td>
-<td id="T_c6e45_row4_col2" class="data row4 col2">22.055700</td>
+<th id="T_9cb95_level1_row4" class="row_heading level1 row4" data-quarto-table-cell-role="th">2</th>
+<td id="T_9cb95_row4_col0" class="data row4 col0">1918.845900</td>
+<td id="T_9cb95_row4_col1" class="data row4 col1">87</td>
+<td id="T_9cb95_row4_col2" class="data row4 col2">22.055700</td>
 </tr>
 <tr class="even">
-<th id="T_c6e45_level1_row5" class="row_heading level1 row5" data-quarto-table-cell-role="th">3</th>
-<td id="T_c6e45_row5_col0" class="data row5 col0">1629.691600</td>
-<td id="T_c6e45_row5_col1" class="data row5 col1">119</td>
-<td id="T_c6e45_row5_col2" class="data row5 col2">13.694887</td>
+<th id="T_9cb95_level1_row5" class="row_heading level1 row5" data-quarto-table-cell-role="th">3</th>
+<td id="T_9cb95_row5_col0" class="data row5 col0">1629.691600</td>
+<td id="T_9cb95_row5_col1" class="data row5 col1">119</td>
+<td id="T_9cb95_row5_col2" class="data row5 col2">13.694887</td>
 </tr>
 </tbody>
 </table>
@@ -745,7 +744,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="データ抽出" class="level2">
 <h2 class="anchored" data-anchor-id="データ抽出">データ抽出</h2>
-<div id="e18d6345" class="cell" data-execution_count="10">
+<div id="e18d6345" class="cell" data-execution_count="41">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>add_entry(</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    category<span class="op">=</span><span class="st">"抽出"</span>,</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    code<span class="op">=</span><span class="st">"df.nlargest(n=10, columns='fare')"</span>,</span>
@@ -755,7 +754,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 指定したカラムのデータを大きい順に抽出</span></span>
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>df.nlargest(n<span class="op">=</span><span class="dv">10</span>, columns<span class="op">=</span>[<span class="st">'fare'</span>, <span class="st">"pclass"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="41">
 <div>
 
 
@@ -967,7 +966,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="0347829d" class="cell" data-execution_count="11">
+<div id="0347829d" class="cell" data-execution_count="42">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>add_entry(</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    category<span class="op">=</span><span class="st">"抽出"</span>,</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    code<span class="op">=</span><span class="st">"df.nsmallest(n=10, columns='fare')"</span>,</span>
@@ -977,7 +976,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 小さい順に抽出</span></span>
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>df.nsmallest(n<span class="op">=</span><span class="dv">10</span>, columns<span class="op">=</span><span class="st">'fare'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="11">
+<div class="cell-output cell-output-display" data-execution_count="42">
 <div>
 
 
@@ -1189,7 +1188,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="85d2234c" class="cell" data-execution_count="12">
+<div id="85d2234c" class="cell" data-execution_count="43">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>add_entry(</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    category<span class="op">=</span><span class="st">"抽出"</span>,</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    code<span class="op">=</span><span class="st">"df.select_dtypes(include='データタイプ')"</span>,</span>
@@ -1268,7 +1267,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="ae502324" class="cell" data-execution_count="13">
+<div id="ae502324" class="cell" data-execution_count="44">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>numbers.hist()</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -1282,7 +1281,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="データ型" class="level2">
 <h2 class="anchored" data-anchor-id="データ型">データ型</h2>
-<div id="3f1a2c2d" class="cell" data-execution_count="14">
+<div id="3f1a2c2d" class="cell" data-execution_count="45">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.DataFrame'&gt;
@@ -1309,7 +1308,7 @@ dtypes: bool(2), category(2), float64(2), int64(4), str(5)
 memory usage: 80.7 KB</code></pre>
 </div>
 </div>
-<div id="6e8d521d" class="cell" data-execution_count="15">
+<div id="6e8d521d" class="cell" data-execution_count="46">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>add_entry(</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    category<span class="op">=</span><span class="st">"データ型"</span>,</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    code<span class="op">=</span><span class="st">"convert_dtypes()"</span>,</span>
@@ -1344,7 +1343,7 @@ dtypes: Float64(2), Int64(4), boolean(2), category(2), string(5)
 memory usage: 87.6 KB</code></pre>
 </div>
 </div>
-<div id="45fe5823" class="cell" data-execution_count="16">
+<div id="45fe5823" class="cell" data-execution_count="47">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 特定の型を変換しないように指定も可能</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>df.convert_dtypes(</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    convert_integer<span class="op">=</span><span class="va">False</span>,</span>
@@ -1380,7 +1379,7 @@ memory usage: 80.7 KB</code></pre>
 </section>
 <section id="整形" class="level2">
 <h2 class="anchored" data-anchor-id="整形">整形</h2>
-<div id="41f17530" class="cell" data-execution_count="17">
+<div id="41f17530" class="cell" data-execution_count="48">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 年齢をビン分割してカテゴリ変数に変換</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>add_entry(</span>
@@ -1397,7 +1396,7 @@ memory usage: 80.7 KB</code></pre>
 <span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">"age"</span>, <span class="st">"age_group"</span>]].head(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="17">
+<div class="cell-output cell-output-display" data-execution_count="48">
 <div>
 
 
@@ -1466,15 +1465,15 @@ memory usage: 80.7 KB</code></pre>
 </div>
 </div>
 </div>
-<div id="5f028905" class="cell" data-execution_count="18">
+<div id="5f028905" class="cell" data-execution_count="49">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">"0 &lt;= age &lt;= 12"</span>)[<span class="st">"age_group"</span>].unique()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="18">
+<div class="cell-output cell-output-display" data-execution_count="49">
 <pre><code>['child']
 Categories (6, str): ['child' &lt; 'teen' &lt; 'adult' &lt; 'middle_aged' &lt; 'senior' &lt; 'elderly']</code></pre>
 </div>
 </div>
 <p>カテゴリ変数となり順序の大小が確保される</p>
-<div id="ed23b180" class="cell" data-execution_count="19">
+<div id="ed23b180" class="cell" data-execution_count="50">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>add_entry(</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    category<span class="op">=</span><span class="st">"整形"</span>,</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    code<span class="op">=</span><span class="st">"pd.qcut(Series, q=4, labels=[])"</span>,</span>
@@ -1485,7 +1484,7 @@ Categories (6, str): ['child' &lt; 'teen' &lt; 'adult' &lt; 'middle_aged' &lt; '
 <span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 料金を4分割してカテゴリ変数に変換</span></span>
 <span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"fare_rank"</span>] <span class="op">=</span> pd.qcut(df[<span class="st">"fare"</span>], q<span class="op">=</span><span class="dv">4</span>, labels<span class="op">=</span>[<span class="st">"low"</span>, <span class="st">"medium"</span>, <span class="st">"high"</span>, <span class="st">"very_high"</span>])</span>
 <span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">"fare"</span>, <span class="st">"fare_rank"</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="19">
+<div class="cell-output cell-output-display" data-execution_count="50">
 <div>
 
 
@@ -1560,9 +1559,9 @@ Categories (6, str): ['child' &lt; 'teen' &lt; 'adult' &lt; 'middle_aged' &lt; '
 </div>
 </div>
 </div>
-<div id="b535dc1a" class="cell" data-execution_count="20">
+<div id="b535dc1a" class="cell" data-execution_count="51">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df_q</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="20">
+<div class="cell-output cell-output-display" data-execution_count="51">
 <div>
 
 
@@ -1580,72 +1579,72 @@ Categories (6, str): ['child' &lt; 'teen' &lt; 'adult' &lt; 'middle_aged' &lt; '
 <tr class="odd">
 <th data-quarto-table-cell-role="th">0</th>
 <td>U001</td>
-<td>32</td>
-<td>2.0</td>
-<td>[寿司, カレー, ラーメン]</td>
+<td>45</td>
+<td>3.0</td>
+<td>[ラーメン]</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">1</th>
 <td>U002</td>
-<td>40</td>
+<td>29</td>
 <td>5.0</td>
-<td>[ラーメン]</td>
+<td>[カレー, サラダ, パスタ]</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">2</th>
 <td>U003</td>
-<td>29</td>
+<td>34</td>
 <td>NaN</td>
-<td>[サラダ, 寿司, パスタ]</td>
+<td>[ハンバーグ, カレー]</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">3</th>
 <td>U004</td>
-<td>49</td>
-<td>4.0</td>
-<td>[ハンバーグ]</td>
+<td>33</td>
+<td>5.0</td>
+<td>[サラダ, カレー, 寿司]</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">4</th>
 <td>U005</td>
-<td>39</td>
-<td>5.0</td>
-<td>[パスタ, ラーメン, ハンバーグ]</td>
+<td>22</td>
+<td>4.0</td>
+<td>[サラダ, カレー, パスタ]</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">5</th>
 <td>U006</td>
-<td>47</td>
+<td>31</td>
 <td>4.0</td>
-<td>[寿司, ハンバーグ]</td>
+<td>[サラダ, カレー, ハンバーグ]</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">6</th>
 <td>U007</td>
-<td>57</td>
+<td>41</td>
 <td>NaN</td>
-<td>[カレー, ラーメン]</td>
+<td>[サラダ, 寿司, カレー]</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">7</th>
 <td>U008</td>
-<td>20</td>
-<td>2.0</td>
-<td>[ラーメン, パスタ, カレー]</td>
+<td>31</td>
+<td>4.0</td>
+<td>[カレー, サラダ, パスタ]</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">8</th>
 <td>U009</td>
-<td>31</td>
+<td>44</td>
 <td>2.0</td>
-<td>[ハンバーグ, 寿司, ラーメン]</td>
+<td>[パスタ, 寿司]</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">9</th>
 <td>U010</td>
-<td>33</td>
-<td>4.0</td>
-<td>[パスタ, 寿司, ラーメン]</td>
+<td>26</td>
+<td>3.0</td>
+<td>[カレー]</td>
 </tr>
 </tbody>
 </table>
@@ -1653,7 +1652,7 @@ Categories (6, str): ['child' &lt; 'teen' &lt; 'adult' &lt; 'middle_aged' &lt; '
 </div>
 </div>
 </div>
-<div id="f853934b" class="cell" data-execution_count="21">
+<div id="f853934b" class="cell" data-execution_count="52">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>add_entry(</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    category<span class="op">=</span><span class="st">"整形"</span>,</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    code<span class="op">=</span><span class="st">"df.explode(column_name)"</span>,</span>
@@ -1664,7 +1663,7 @@ Categories (6, str): ['child' &lt; 'teen' &lt; 'adult' &lt; 'middle_aged' &lt; '
 <span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="co"># explodeメソッドでリストを展開</span></span>
 <span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>df_q_exploded <span class="op">=</span> df_q.explode([<span class="st">"好きな食べ物"</span>]).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>df_q_exploded</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="21">
+<div class="cell-output cell-output-display" data-execution_count="52">
 <div>
 
 
@@ -1682,170 +1681,170 @@ Categories (6, str): ['child' &lt; 'teen' &lt; 'adult' &lt; 'middle_aged' &lt; '
 <tr class="odd">
 <th data-quarto-table-cell-role="th">0</th>
 <td>U001</td>
-<td>32</td>
-<td>2.0</td>
-<td>寿司</td>
+<td>45</td>
+<td>3.0</td>
+<td>ラーメン</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">1</th>
-<td>U001</td>
-<td>32</td>
-<td>2.0</td>
+<td>U002</td>
+<td>29</td>
+<td>5.0</td>
 <td>カレー</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">2</th>
-<td>U001</td>
-<td>32</td>
-<td>2.0</td>
-<td>ラーメン</td>
+<td>U002</td>
+<td>29</td>
+<td>5.0</td>
+<td>サラダ</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">3</th>
 <td>U002</td>
-<td>40</td>
+<td>29</td>
 <td>5.0</td>
-<td>ラーメン</td>
+<td>パスタ</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">4</th>
 <td>U003</td>
-<td>29</td>
+<td>34</td>
 <td>NaN</td>
-<td>サラダ</td>
+<td>ハンバーグ</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">5</th>
 <td>U003</td>
-<td>29</td>
+<td>34</td>
 <td>NaN</td>
-<td>寿司</td>
+<td>カレー</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">6</th>
-<td>U003</td>
-<td>29</td>
-<td>NaN</td>
-<td>パスタ</td>
+<td>U004</td>
+<td>33</td>
+<td>5.0</td>
+<td>サラダ</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">7</th>
 <td>U004</td>
-<td>49</td>
-<td>4.0</td>
-<td>ハンバーグ</td>
+<td>33</td>
+<td>5.0</td>
+<td>カレー</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">8</th>
-<td>U005</td>
-<td>39</td>
+<td>U004</td>
+<td>33</td>
 <td>5.0</td>
-<td>パスタ</td>
+<td>寿司</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">9</th>
 <td>U005</td>
-<td>39</td>
-<td>5.0</td>
-<td>ラーメン</td>
+<td>22</td>
+<td>4.0</td>
+<td>サラダ</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">10</th>
 <td>U005</td>
-<td>39</td>
-<td>5.0</td>
-<td>ハンバーグ</td>
+<td>22</td>
+<td>4.0</td>
+<td>カレー</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">11</th>
-<td>U006</td>
-<td>47</td>
+<td>U005</td>
+<td>22</td>
 <td>4.0</td>
-<td>寿司</td>
+<td>パスタ</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">12</th>
 <td>U006</td>
-<td>47</td>
+<td>31</td>
 <td>4.0</td>
-<td>ハンバーグ</td>
+<td>サラダ</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">13</th>
-<td>U007</td>
-<td>57</td>
-<td>NaN</td>
+<td>U006</td>
+<td>31</td>
+<td>4.0</td>
 <td>カレー</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">14</th>
-<td>U007</td>
-<td>57</td>
-<td>NaN</td>
-<td>ラーメン</td>
+<td>U006</td>
+<td>31</td>
+<td>4.0</td>
+<td>ハンバーグ</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">15</th>
-<td>U008</td>
-<td>20</td>
-<td>2.0</td>
-<td>ラーメン</td>
+<td>U007</td>
+<td>41</td>
+<td>NaN</td>
+<td>サラダ</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">16</th>
-<td>U008</td>
-<td>20</td>
-<td>2.0</td>
-<td>パスタ</td>
+<td>U007</td>
+<td>41</td>
+<td>NaN</td>
+<td>寿司</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">17</th>
-<td>U008</td>
-<td>20</td>
-<td>2.0</td>
+<td>U007</td>
+<td>41</td>
+<td>NaN</td>
 <td>カレー</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">18</th>
-<td>U009</td>
+<td>U008</td>
 <td>31</td>
-<td>2.0</td>
-<td>ハンバーグ</td>
+<td>4.0</td>
+<td>カレー</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">19</th>
-<td>U009</td>
+<td>U008</td>
 <td>31</td>
-<td>2.0</td>
-<td>寿司</td>
+<td>4.0</td>
+<td>サラダ</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">20</th>
-<td>U009</td>
+<td>U008</td>
 <td>31</td>
-<td>2.0</td>
-<td>ラーメン</td>
+<td>4.0</td>
+<td>パスタ</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">21</th>
-<td>U010</td>
-<td>33</td>
-<td>4.0</td>
+<td>U009</td>
+<td>44</td>
+<td>2.0</td>
 <td>パスタ</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">22</th>
-<td>U010</td>
-<td>33</td>
-<td>4.0</td>
+<td>U009</td>
+<td>44</td>
+<td>2.0</td>
 <td>寿司</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">23</th>
 <td>U010</td>
-<td>33</td>
-<td>4.0</td>
-<td>ラーメン</td>
+<td>26</td>
+<td>3.0</td>
+<td>カレー</td>
 </tr>
 </tbody>
 </table>
@@ -1862,7 +1861,7 @@ Categories (6, str): ['child' &lt; 'teen' &lt; 'adult' &lt; 'middle_aged' &lt; '
 <li>pivotは列の値を新しい列名にする（重複無し）</li>
 <li>pivot_tableはpivotに集計をプラスする</li>
 </ul>
-<div id="1a0275e4" class="cell" data-execution_count="22">
+<div id="1a0275e4" class="cell" data-execution_count="53">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>add_entry(</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    category<span class="op">=</span><span class="st">"整形"</span>,</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    code<span class="op">=</span><span class="st">"df.explode(column_name)"</span>,</span>
@@ -1872,7 +1871,7 @@ Categories (6, str): ['child' &lt; 'teen' &lt; 'adult' &lt; 'middle_aged' &lt; '
 <span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>df_single_columns <span class="op">=</span> df[[<span class="st">"embark_town"</span>, <span class="st">"fare"</span>]]</span>
 <span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>df_single_columns.stack(level<span class="op">=-</span><span class="dv">1</span>).reset_index().head(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="22">
+<div class="cell-output cell-output-display" data-execution_count="53">
 <div>
 
 
@@ -1952,7 +1951,7 @@ Categories (6, str): ['child' &lt; 'teen' &lt; 'adult' &lt; 'middle_aged' &lt; '
 </div>
 </div>
 </div>
-<div id="84fb1b81" class="cell" data-execution_count="23">
+<div id="84fb1b81" class="cell" data-execution_count="54">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>agged <span class="op">=</span> (</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    df.groupby([<span class="st">"class"</span>])</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    .agg(</span>
@@ -1964,7 +1963,7 @@ Categories (6, str): ['child' &lt; 'teen' &lt; 'adult' &lt; 'middle_aged' &lt; '
 <span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>agged</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="23">
+<div class="cell-output cell-output-display" data-execution_count="54">
 <div>
 
 
@@ -2018,10 +2017,10 @@ Categories (6, str): ['child' &lt; 'teen' &lt; 'adult' &lt; 'middle_aged' &lt; '
 </div>
 </div>
 </div>
-<div id="8e76e42d" class="cell" data-execution_count="24">
+<div id="8e76e42d" class="cell" data-execution_count="55">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>stack_se <span class="op">=</span> agged.stack(level<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>stack_se</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="24">
+<div class="cell-output cell-output-display" data-execution_count="55">
 <pre><code>class                
 First   average_fare      84.154687
         max_fare         512.329200
@@ -2041,9 +2040,9 @@ Third   average_fare      13.675550
 dtype: float64</code></pre>
 </div>
 </div>
-<div id="caa6ce54" class="cell" data-execution_count="25">
+<div id="caa6ce54" class="cell" data-execution_count="56">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>stack_se.reset_index()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="25">
+<div class="cell-output cell-output-display" data-execution_count="56">
 <div>
 
 
@@ -2154,9 +2153,9 @@ dtype: float64</code></pre>
 </div>
 </div>
 <p>横長になった集計値を確認するにはちょうどよさそう。</p>
-<div id="f9aa4dca" class="cell" data-execution_count="26">
+<div id="f9aa4dca" class="cell" data-execution_count="57">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>stack_se.index</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="26">
+<div class="cell-output cell-output-display" data-execution_count="57">
 <pre><code>MultiIndex([( 'First',  'average_fare'),
             ( 'First',      'max_fare'),
             ( 'First',      'min_fare'),
@@ -2175,11 +2174,11 @@ dtype: float64</code></pre>
            names=['class', None])</code></pre>
 </div>
 </div>
-<div id="a7ee91ba" class="cell" data-execution_count="27">
+<div id="a7ee91ba" class="cell" data-execution_count="58">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># stackで積み上げられたものはunstackで元に戻せる</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>unstacked <span class="op">=</span> stack_se.unstack(level<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>unstacked</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="27">
+<div class="cell-output cell-output-display" data-execution_count="58">
 <div>
 
 
@@ -2233,7 +2232,7 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<div id="572c5fe7" class="cell" data-execution_count="28">
+<div id="572c5fe7" class="cell" data-execution_count="59">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>add_entry(</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    category<span class="op">=</span><span class="st">"整形"</span>,</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    code<span class="op">=</span><span class="st">"df.melt(id_vars=[], var_name='', value_name='')"</span>,</span>
@@ -2244,7 +2243,7 @@ dtype: float64</code></pre>
 <span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="co"># meltメソッドで縦に長いデータに変換</span></span>
 <span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>df_agged <span class="op">=</span> agged.reset_index()</span>
 <span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>df_agged.melt(id_vars<span class="op">=</span>[<span class="st">"class"</span>], var_name<span class="op">=</span><span class="st">"指標"</span>, value_name<span class="op">=</span><span class="st">"値"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="28">
+<div class="cell-output cell-output-display" data-execution_count="59">
 <div>
 
 
@@ -2360,7 +2359,7 @@ dtype: float64</code></pre>
 </section>
 <section id="結合の安全性" class="level2">
 <h2 class="anchored" data-anchor-id="結合の安全性">結合の安全性</h2>
-<div id="6cdbf93f" class="cell" data-execution_count="29">
+<div id="6cdbf93f" class="cell" data-execution_count="60">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>display(df_user)</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>display(df_order)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -2445,7 +2444,7 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<div id="9c929418" class="cell" data-execution_count="30">
+<div id="9c929418" class="cell" data-execution_count="61">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 普通にマージすると気づかずしてしまう。</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>df_merged <span class="op">=</span> pd.merge(df_user, df_order, on<span class="op">=</span><span class="st">'user_id'</span>, how<span class="op">=</span><span class="st">'inner'</span>)</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>display(df_merged)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2505,7 +2504,7 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<div id="84a2725b" class="cell" data-execution_count="31">
+<div id="84a2725b" class="cell" data-execution_count="62">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>add_entry(</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    category<span class="op">=</span><span class="st">"結合"</span>,</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    code<span class="op">=</span><span class="st">"df.merge(other_df, on='column_name', how='inner', validate='one_to_many')"</span>,</span>
@@ -2525,7 +2524,7 @@ dtype: float64</code></pre>
 <div class="ansi-escaped-output">
 <pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">MergeError</span>                                Traceback (most recent call last)
-<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[31]</span><span class="ansi-green-fg">, line 8</span>
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[62]</span><span class="ansi-green-fg">, line 8</span>
 <span class="ansi-green-fg">      1</span> add_entry(
 <span class="ansi-green-fg">      2</span>     category=<span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">結合</span><span class="ansi-yellow-fg">"</span>,
 <span class="ansi-green-fg">      3</span>     code=<span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">df.merge(other_df, on=</span><span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">column_name</span><span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">, how=</span><span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">inner</span><span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">, validate=</span><span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">one_to_many</span><span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">)</span><span class="ansi-yellow-fg">"</span>,
@@ -2592,11 +2591,241 @@ Duplicates in left:
 </section>
 <section id="チェーンメソッド" class="level2">
 <h2 class="anchored" data-anchor-id="チェーンメソッド">チェーンメソッド</h2>
-<div id="a7e28826" class="cell">
+<div id="a7e28826" class="cell" data-execution_count="63">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> sns.load_dataset(<span class="st">'titanic'</span>)</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="63">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">survived</th>
+<th data-quarto-table-cell-role="th">pclass</th>
+<th data-quarto-table-cell-role="th">sex</th>
+<th data-quarto-table-cell-role="th">age</th>
+<th data-quarto-table-cell-role="th">sibsp</th>
+<th data-quarto-table-cell-role="th">parch</th>
+<th data-quarto-table-cell-role="th">fare</th>
+<th data-quarto-table-cell-role="th">embarked</th>
+<th data-quarto-table-cell-role="th">class</th>
+<th data-quarto-table-cell-role="th">who</th>
+<th data-quarto-table-cell-role="th">adult_male</th>
+<th data-quarto-table-cell-role="th">deck</th>
+<th data-quarto-table-cell-role="th">embark_town</th>
+<th data-quarto-table-cell-role="th">alive</th>
+<th data-quarto-table-cell-role="th">alone</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>0</td>
+<td>3</td>
+<td>male</td>
+<td>22.0</td>
+<td>1</td>
+<td>0</td>
+<td>7.2500</td>
+<td>S</td>
+<td>Third</td>
+<td>man</td>
+<td>True</td>
+<td>NaN</td>
+<td>Southampton</td>
+<td>no</td>
+<td>False</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>1</td>
+<td>1</td>
+<td>female</td>
+<td>38.0</td>
+<td>1</td>
+<td>0</td>
+<td>71.2833</td>
+<td>C</td>
+<td>First</td>
+<td>woman</td>
+<td>False</td>
+<td>C</td>
+<td>Cherbourg</td>
+<td>yes</td>
+<td>False</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>1</td>
+<td>3</td>
+<td>female</td>
+<td>26.0</td>
+<td>0</td>
+<td>0</td>
+<td>7.9250</td>
+<td>S</td>
+<td>Third</td>
+<td>woman</td>
+<td>False</td>
+<td>NaN</td>
+<td>Southampton</td>
+<td>yes</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>1</td>
+<td>1</td>
+<td>female</td>
+<td>35.0</td>
+<td>1</td>
+<td>0</td>
+<td>53.1000</td>
+<td>S</td>
+<td>First</td>
+<td>woman</td>
+<td>False</td>
+<td>C</td>
+<td>Southampton</td>
+<td>yes</td>
+<td>False</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>0</td>
+<td>3</td>
+<td>male</td>
+<td>35.0</td>
+<td>0</td>
+<td>0</td>
+<td>8.0500</td>
+<td>S</td>
+<td>Third</td>
+<td>man</td>
+<td>True</td>
+<td>NaN</td>
+<td>Southampton</td>
+<td>no</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">886</th>
+<td>0</td>
+<td>2</td>
+<td>male</td>
+<td>27.0</td>
+<td>0</td>
+<td>0</td>
+<td>13.0000</td>
+<td>S</td>
+<td>Second</td>
+<td>man</td>
+<td>True</td>
+<td>NaN</td>
+<td>Southampton</td>
+<td>no</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">887</th>
+<td>1</td>
+<td>1</td>
+<td>female</td>
+<td>19.0</td>
+<td>0</td>
+<td>0</td>
+<td>30.0000</td>
+<td>S</td>
+<td>First</td>
+<td>woman</td>
+<td>False</td>
+<td>B</td>
+<td>Southampton</td>
+<td>yes</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">888</th>
+<td>0</td>
+<td>3</td>
+<td>female</td>
+<td>NaN</td>
+<td>1</td>
+<td>2</td>
+<td>23.4500</td>
+<td>S</td>
+<td>Third</td>
+<td>woman</td>
+<td>False</td>
+<td>NaN</td>
+<td>Southampton</td>
+<td>no</td>
+<td>False</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">889</th>
+<td>1</td>
+<td>1</td>
+<td>male</td>
+<td>26.0</td>
+<td>0</td>
+<td>0</td>
+<td>30.0000</td>
+<td>C</td>
+<td>First</td>
+<td>man</td>
+<td>True</td>
+<td>C</td>
+<td>Cherbourg</td>
+<td>yes</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">890</th>
+<td>0</td>
+<td>3</td>
+<td>male</td>
+<td>32.0</td>
+<td>0</td>
+<td>0</td>
+<td>7.7500</td>
+<td>Q</td>
+<td>Third</td>
+<td>man</td>
+<td>True</td>
+<td>NaN</td>
+<td>Queenstown</td>
+<td>no</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+
+<p>891 rows × 15 columns</p>
 </div>
-<div id="9fc14380" class="cell">
+</div>
+</div>
+<div id="9fc14380" class="cell" data-execution_count="64">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># こんな感じのやつ</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>df_preprocessed <span class="op">=</span> (</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    df[[<span class="st">"survived"</span>, <span class="st">"pclass"</span>, <span class="st">"age"</span>, <span class="st">"fare"</span>]]</span>
@@ -2604,9 +2833,107 @@ Duplicates in left:
 <span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    .convert_dtypes()</span>
 <span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>df_preprocessed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="64">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">survived</th>
+<th data-quarto-table-cell-role="th">pclass</th>
+<th data-quarto-table-cell-role="th">age</th>
+<th data-quarto-table-cell-role="th">fare</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>0</td>
+<td>3</td>
+<td>22.0</td>
+<td>7.25</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>1</td>
+<td>1</td>
+<td>38.0</td>
+<td>71.2833</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>1</td>
+<td>3</td>
+<td>26.0</td>
+<td>7.925</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>1</td>
+<td>1</td>
+<td>35.0</td>
+<td>53.1</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>0</td>
+<td>3</td>
+<td>35.0</td>
+<td>8.05</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">885</th>
+<td>0</td>
+<td>3</td>
+<td>39.0</td>
+<td>29.125</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">886</th>
+<td>0</td>
+<td>2</td>
+<td>27.0</td>
+<td>13.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">887</th>
+<td>1</td>
+<td>1</td>
+<td>19.0</td>
+<td>30.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">889</th>
+<td>1</td>
+<td>1</td>
+<td>26.0</td>
+<td>30.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">890</th>
+<td>0</td>
+<td>3</td>
+<td>32.0</td>
+<td>7.75</td>
+</tr>
+</tbody>
+</table>
+
+<p>714 rows × 4 columns</p>
+</div>
+</div>
 </div>
 <p>assignとpipを使えば複雑なものもチェーンメソッドに書ける</p>
-<div id="53bde679" class="cell">
+<div id="53bde679" class="cell" data-execution_count="65">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add_tax(df, tax_rate<span class="op">=</span><span class="fl">0.1</span>):</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    df_copy <span class="op">=</span> df.copy()</span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    df_copy[<span class="st">'fare_with_tax'</span>] <span class="op">=</span> df_copy[<span class="st">'fare'</span>] <span class="op">*</span> (<span class="dv">1</span> <span class="op">+</span> tax_rate)</span>
@@ -2615,7 +2942,7 @@ Duplicates in left:
 <span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> hoge(df):</span>
 <span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="d5a123c1" class="cell">
+<div id="d5a123c1" class="cell" data-execution_count="71">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>add_entry(</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>    category<span class="op">=</span><span class="st">"チェーンメソッド"</span>,</span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    code<span class="op">=</span><span class="st">"df.assign(...)"</span>,</span>
@@ -2637,19 +2964,277 @@ Duplicates in left:
 <span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a>    .convert_dtypes()</span>
 <span id="cb42-20"><a href="#cb42-20" aria-hidden="true" tabindex="-1"></a>    .assign(age_group<span class="op">=</span><span class="kw">lambda</span> x: pd.cut(x[<span class="st">"age"</span>], bins<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">12</span>, <span class="dv">20</span>, <span class="dv">40</span>, <span class="dv">60</span>, <span class="dv">80</span>], labels<span class="op">=</span>[<span class="st">"child"</span>, <span class="st">"teen"</span>, <span class="st">"adult"</span>, <span class="st">"middle_aged"</span>, <span class="st">"senior"</span>]))</span>
 <span id="cb42-21"><a href="#cb42-21" aria-hidden="true" tabindex="-1"></a>    .pipe(add_tax, tax_rate<span class="op">=</span><span class="fl">0.1</span>)</span>
-<span id="cb42-22"><a href="#cb42-22" aria-hidden="true" tabindex="-1"></a>    .pipe(hoge)</span>
-<span id="cb42-23"><a href="#cb42-23" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb42-24"><a href="#cb42-24" aria-hidden="true" tabindex="-1"></a>df_preprocessed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb42-22"><a href="#cb42-22" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb42-23"><a href="#cb42-23" aria-hidden="true" tabindex="-1"></a>df_preprocessed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="71">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">survived</th>
+<th data-quarto-table-cell-role="th">pclass</th>
+<th data-quarto-table-cell-role="th">age</th>
+<th data-quarto-table-cell-role="th">fare</th>
+<th data-quarto-table-cell-role="th">age_group</th>
+<th data-quarto-table-cell-role="th">fare_with_tax</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>0</td>
+<td>3</td>
+<td>22.0</td>
+<td>7.25</td>
+<td>adult</td>
+<td>7.975</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>1</td>
+<td>1</td>
+<td>38.0</td>
+<td>71.2833</td>
+<td>adult</td>
+<td>78.41163</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>1</td>
+<td>3</td>
+<td>26.0</td>
+<td>7.925</td>
+<td>adult</td>
+<td>8.7175</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>1</td>
+<td>1</td>
+<td>35.0</td>
+<td>53.1</td>
+<td>adult</td>
+<td>58.41</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>0</td>
+<td>3</td>
+<td>35.0</td>
+<td>8.05</td>
+<td>adult</td>
+<td>8.855</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">885</th>
+<td>0</td>
+<td>3</td>
+<td>39.0</td>
+<td>29.125</td>
+<td>adult</td>
+<td>32.0375</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">886</th>
+<td>0</td>
+<td>2</td>
+<td>27.0</td>
+<td>13.0</td>
+<td>adult</td>
+<td>14.3</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">887</th>
+<td>1</td>
+<td>1</td>
+<td>19.0</td>
+<td>30.0</td>
+<td>teen</td>
+<td>33.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">889</th>
+<td>1</td>
+<td>1</td>
+<td>26.0</td>
+<td>30.0</td>
+<td>adult</td>
+<td>33.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">890</th>
+<td>0</td>
+<td>3</td>
+<td>32.0</td>
+<td>7.75</td>
+<td>adult</td>
+<td>8.525</td>
+</tr>
+</tbody>
+</table>
+
+<p>714 rows × 6 columns</p>
 </div>
-</section>
-<section id="要約" class="level2">
-<h2 class="anchored" data-anchor-id="要約">要約</h2>
-<div id="b70c49b3" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="d5a651be" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>summary_df <span class="op">=</span> pd.DataFrame(data)</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>summary_df.to_markdown(<span class="st">"./data/advanced_pandas_summary.md"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="f0c7ea49" class="cell" data-execution_count="78">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pandas3.0からこうも書ける</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>tax_logic <span class="op">=</span> pd.col(<span class="st">"fare_with_tax"</span>) <span class="op">-</span> pd.col(<span class="st">"fare"</span>) <span class="co"># 計算ロジックを定義</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>df_preprocessed <span class="op">=</span> (</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    df[[<span class="st">"survived"</span>, <span class="st">"pclass"</span>, <span class="st">"age"</span>, <span class="st">"fare"</span>]]</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>    .dropna(subset<span class="op">=</span>[<span class="st">'age'</span>, <span class="st">'fare'</span>])</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>    .convert_dtypes()</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>    .assign(age_group<span class="op">=</span><span class="kw">lambda</span> x: pd.cut(x[<span class="st">"age"</span>], bins<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">12</span>, <span class="dv">20</span>, <span class="dv">40</span>, <span class="dv">60</span>, <span class="dv">80</span>], labels<span class="op">=</span>[<span class="st">"child"</span>, <span class="st">"teen"</span>, <span class="st">"adult"</span>, <span class="st">"middle_aged"</span>, <span class="st">"senior"</span>]))</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>    .pipe(add_tax, tax_rate<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>    .assign(tax<span class="op">=</span>tax_logic) <span class="co"># assign内でチェーンメソッドとして書ける</span></span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>df_preprocessed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="78">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">survived</th>
+<th data-quarto-table-cell-role="th">pclass</th>
+<th data-quarto-table-cell-role="th">age</th>
+<th data-quarto-table-cell-role="th">fare</th>
+<th data-quarto-table-cell-role="th">age_group</th>
+<th data-quarto-table-cell-role="th">fare_with_tax</th>
+<th data-quarto-table-cell-role="th">tax</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>0</td>
+<td>3</td>
+<td>22.0</td>
+<td>7.25</td>
+<td>adult</td>
+<td>7.975</td>
+<td>0.725</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>1</td>
+<td>1</td>
+<td>38.0</td>
+<td>71.2833</td>
+<td>adult</td>
+<td>78.41163</td>
+<td>7.12833</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>1</td>
+<td>3</td>
+<td>26.0</td>
+<td>7.925</td>
+<td>adult</td>
+<td>8.7175</td>
+<td>0.7925</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>1</td>
+<td>1</td>
+<td>35.0</td>
+<td>53.1</td>
+<td>adult</td>
+<td>58.41</td>
+<td>5.31</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>0</td>
+<td>3</td>
+<td>35.0</td>
+<td>8.05</td>
+<td>adult</td>
+<td>8.855</td>
+<td>0.805</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">885</th>
+<td>0</td>
+<td>3</td>
+<td>39.0</td>
+<td>29.125</td>
+<td>adult</td>
+<td>32.0375</td>
+<td>2.9125</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">886</th>
+<td>0</td>
+<td>2</td>
+<td>27.0</td>
+<td>13.0</td>
+<td>adult</td>
+<td>14.3</td>
+<td>1.3</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">887</th>
+<td>1</td>
+<td>1</td>
+<td>19.0</td>
+<td>30.0</td>
+<td>teen</td>
+<td>33.0</td>
+<td>3.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">889</th>
+<td>1</td>
+<td>1</td>
+<td>26.0</td>
+<td>30.0</td>
+<td>adult</td>
+<td>33.0</td>
+<td>3.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">890</th>
+<td>0</td>
+<td>3</td>
+<td>32.0</td>
+<td>7.75</td>
+<td>adult</td>
+<td>8.525</td>
+<td>0.775</td>
+</tr>
+</tbody>
+</table>
+
+<p>714 rows × 7 columns</p>
+</div>
+</div>
 </div>
 
 
